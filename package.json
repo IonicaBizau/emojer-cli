@@ -1,0 +1,25 @@
+{
+  "name": "emojer-cli",
+  "version": "1.0.0",
+  "description": "Command line tool for emojer.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/IonicaBizau/emojer-cli.git"
+  },
+  "keywords": [
+    "cli",
+    "emojer",
+    "emoji",
+    "emojify"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IonicaBizau/emojer-cli/issues"
+  },
+  "homepage": "https://github.com/IonicaBizau/emojer-cli#readme"
+}
