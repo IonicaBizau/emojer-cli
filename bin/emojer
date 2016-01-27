@@ -1,0 +1,67 @@
+#!/usr/bin/env node
+
+"use strict";
+
+// Dependencies
+const emojer = require("emojer")
+    , Clp = require("clp")
+    , Package = require("../package")
+    , log = require("emoji-logger")
+    , abs = require("abs")
+    , readUtf8 = require("read-utf8")
+    , fs = require("fs")
+    ;
+
+// Parse the command line arguments
+var templateOpt = new Clp.Option(["t", "template"], "The template snippet.", "template")
+  , pathOpt = new Clp.Option(["p", "path"], "The path to a file you want to emojify.", "path")
+  , outputOpt = new Clp.Option(["o", "output"], "Specify an output file where to write the result.", "path")
+  , inputOpt = new Clp.Option(["i", "input"], "The input message containing :emoji: snippets (note you can pipe the things in the stdin too).", "message")
+  , parser = new Clp({
+        name: "Emojer"
+      , version: Package.version
+      , exe: Package.name
+      , examples: [
+            "echo ':octocat:' | emojer -t 'https://github.global.ssl.fastly.net/images/icons/emoji/__EMOJI_NAME__.png'"
+          , "emojer -i 'octocat' -t 'https://github.global.ssl.fastly.net/images/icons/emoji/__EMOJI_NAME__.png'"
+          , "emojer -p some-file.html -t 'https://github.global.ssl.fastly.net/images/icons/emoji/__EMOJI_NAME__.png'"
+          , "emojer -p some-file.html -t 'https://github.global.ssl.fastly.net/images/icons/emoji/__EMOJI_NAME__.png' -o result.html"
+        ]
+      , docs_url: Package.homepage
+      , notes: "Emojify all the things!"
+      , process: true
+    }, [templateOpt, inputOpt, pathOpt, outputOpt])
+  ;
+
+if (!templateOpt.value) {
+    return log("The template is mandatory.", "error");
+}
+
+let convert = message => {
+    let result = emojer(message, templateOpt.value);
+    if (outputOpt.value) {
+        outputOpt.value = abs(outputOpt.value);
+        fs.writeFile(outputOpt.value, result, err => {
+            if (err) { return log(err.message, "error"); }
+            log(`Wrote the result in ${outputOpt.value}`);
+        });
+    } else {
+        console.log(result);
+    }
+};
+
+// From a file
+if (pathOpt.value) {
+    pathOpt.value = abs(pathOpt.value);
+    convert(readUtf8(pathOpt.value));
+} else if (inputOpt.value) {
+    convert(inputOpt.value);
+} else {
+    let stdinData = "";
+    process.stdin.on("data", chunk => {
+        stdinData += chunk;
+    });
+    process.stdin.on("end", chunk => {
+        convert(stdinData);
+    });
+}
