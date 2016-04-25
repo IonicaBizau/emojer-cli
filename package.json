@@ -1,6 +1,6 @@
 {
   "name": "emojer-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Command line tool for emojer.",
   "main": "lib/index.js",
   "bin": {
@@ -31,5 +31,16 @@
     "emojer": "^1.0.0",
     "emoji-logger": "^1.0.1",
     "read-utf8": "^1.2.1"
-  }
+  },
+  "files": [
+    "bin/",
+    "app/",
+    "lib/",
+    "dist/",
+    "src/",
+    "resources/",
+    "menu/",
+    "cli.js",
+    "index.js"
+  ]
 }
