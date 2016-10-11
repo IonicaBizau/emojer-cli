@@ -1,6 +1,6 @@
 {
   "name": "emojer-cli",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Command line tool for emojer.",
   "main": "lib/index.js",
   "bin": {
@@ -36,6 +36,7 @@
     "bin/",
     "app/",
     "lib/",
+    "build/",
     "dist/",
     "src/",
     "resources/",
