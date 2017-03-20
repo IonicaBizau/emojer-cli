@@ -1,6 +1,6 @@
 {
   "name": "emojer-cli",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Command line tool for emojer.",
   "main": "lib/index.js",
   "bin": {
@@ -19,7 +19,7 @@
     "emoji",
     "emojify"
   ],
-  "author": "Ionică Bizău <bizauionica@gmail.com> (http://ionicabizau.net)",
+  "author": "Ionică Bizău <bizauionica@gmail.com> (https://ionicabizau.net)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/IonicaBizau/emojer-cli/issues"
@@ -36,12 +36,11 @@
     "bin/",
     "app/",
     "lib/",
-    "build/",
     "dist/",
     "src/",
+    "scripts/",
     "resources/",
     "menu/",
-    "scripts/",
     "cli.js",
     "index.js"
   ]
