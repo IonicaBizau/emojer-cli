@@ -13,7 +13,11 @@ You can install the package globally and use it as command line tool:
 
 
 ```sh
-$ npm i -g emojer-cli
+# Using npm
+npm install --global emojer-cli
+
+# Using yarn
+yarn global add emojer-cli
 ```
 
 
