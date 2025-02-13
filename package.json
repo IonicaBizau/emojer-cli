@@ -1,6 +1,6 @@
 {
   "name": "emojer-cli",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Command line tool for emojer.",
   "main": "lib/index.js",
   "bin": {
@@ -43,6 +43,8 @@
     "menu/",
     "cli.js",
     "index.js",
+    "index.d.ts",
+    "package-lock.json",
     "bloggify.js",
     "bloggify.json",
     "bloggify/"
